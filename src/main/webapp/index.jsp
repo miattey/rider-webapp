@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +31,7 @@
             align-items: center;
             padding-top: 40px;
             padding-bottom: 40px;
-            background-color: #eeeeee;
+            background-color: #f5f5f5;
             font-weight: 300;
             font-size: 0.9rem;
         }
@@ -69,7 +69,7 @@
 <body class="text-center">
 
 <main class="form-signin">
-    <form action="" method="">
+    <form action="login" method="POST">
         <div class="bg-dark align-items-center p-3 my-3 text-white shadow-sm">
             <div>
                 <img class="" src="img/LOGO2.png" alt="" width="" height="60">
@@ -86,6 +86,8 @@
         <div class="card p-3">
             <h1 class="h4 mb-2 fw-normal">Please sign in</h1>
             <br>
+            ${message}
+
 
             <div class="form-floating">
                 <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
