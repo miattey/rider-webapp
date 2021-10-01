@@ -1,26 +1,43 @@
 package model.pojo;
 
 public class User {
-    private int id;
-    private String name;
-    private String username;
+
+    private int ID;
     private String password;
-    private String type;
+    private String usertype;
+    private String firstName;
+    private String lastName;
+    private String username;
 
-    public int getId() {
-        return id;
+    public User(){
+
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public User(User u){
+        this.username = u.username;
+        this.ID = u.ID;
+        this.firstName = u.firstName;
+        this.lastName = u.lastName;
+        this.password = u.password;
+        this.usertype = u.usertype;
     }
 
-    public String getName() {
-        return name;
+    public User(String username, String password, String firstName, String lastName, String usertype){
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.usertype = usertype;
+
     }
 
-    public void setName(String name) {
-        this.name = name;
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getUsername() {
@@ -39,18 +56,30 @@ public class User {
         this.password = password;
     }
 
-    public String getType() {
-        return type;
+    public String getUsertype() {
+        return usertype;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setUsertype(String usertype) {
+        this.usertype = usertype;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
 
 
-    @Override
-    public String toString(){
-        return "Name="+this.name+", Email="+this.username+", Country="+this.type;
-    }
 }
