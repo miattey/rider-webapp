@@ -1,5 +1,6 @@
 package model.dao;
 
+import model.pojo.Customer;
 import model.pojo.User;
 
 import java.sql.Connection;
@@ -36,91 +37,8 @@ public class UserDAO {
         connection = con;
     }
 
-    private ArrayList rsToList() throws SQLException {
-        ArrayList aList = new ArrayList();
 
-        int cols = rs.getMetaData().getColumnCount();
-        while (rs.next()) {
-            String[] s = new String[cols];
-            for (int i = 1; i <= cols; i++) {
-                s[i-1] = rs.getString(i);
-            }
-            aList.add(s);
-        } // while
-        return aList;
-    } //rsToList
 
-    private String makeHtmlTable(ArrayList list) {
-        StringBuilder b = new StringBuilder();
-        String[] row;
-        b.append("<table border=\"3\">");
-        for (Object s : list) {
-            b.append("<tr>");
-            row = (String[]) s;
-            for (String row1 : row) {
-                b.append("<td>");
-                b.append(row1);
-                b.append("</td>");
-            }
-            b.append("</tr>\n");
-        } // for
-        b.append("</table>");
-        return b.toString();
-    }//makeHtmlTable
-
-    private String makeTable(ArrayList list) {
-        StringBuilder b = new StringBuilder();
-        String[] row;
-        b.append(String.format("%-12s %-12s\n","Username","Password"));
-        b.append("================================");
-        for (Object s : list) {
-            b.append("\n");
-            row = (String[]) s;
-            for (String row1 : row) {
-                //b.append("\t");
-                b.append(String.format("%-12s",row1));
-                //b.append("\t");
-            }//for
-            // b.append("\n");
-        } // for
-        b.append("\n");
-        b.append("================================");
-        return b.toString();
-    }//makeTable
-
-    private void select(String query){
-        //Statement statement = null;
-
-        try {
-            statement = connection.createStatement();
-            rs = statement.executeQuery(query);
-            //statement.close();
-        }
-        catch(SQLException e) {
-            System.out.println("way way"+e);
-            //results = e.toString();
-        }
-    }
-    public String retrieve(String query) throws SQLException {
-        String results="";
-        select(query);
-
-        return makeTable(rsToList());//results;
-    }
-
-    public boolean exists(String user) {
-        boolean bool = false;
-        try  {
-            select("select username from users where username='"+user+"'");
-            if(rs.next()) {
-                System.out.println(user+" exits in the DB");
-                bool = true;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return bool;
-    }
 
     public User authenticate(String username, String password) {
         User user = null;
@@ -136,9 +54,12 @@ public class UserDAO {
             while (rs.next()) {
                 user = new User();
 
-                user.setName(rs.getString("FULLNAME"));
-                user.setType(rs.getString("TYPE"));
+
+                user.setID(rs.getInt("ID"));
+                user.setUsertype(rs.getString("USERTYPE"));
                 user.setUsername(rs.getString("USERNAME"));
+                user.setFirstName(rs.getString("FIRST_NAME"));
+                user.setLastName(rs.getString("LAST_NAME"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -146,57 +67,99 @@ public class UserDAO {
         return user;
     }
 
-    public void insert(String[] str){
-        PreparedStatement ps = null;
-        try {
-            ps = connection.prepareStatement("INSERT INTO users VALUES (?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
-            ps.setString(1, str[0].trim());
-            ps.setString(2, str[1]);
-            ps.executeUpdate();
+    public User findByName(String username)
+    {
+        User user = null;
 
-            ps.close();
-            System.out.println("1 row added.");
-        } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        try
+        {
+            PreparedStatement stmt = connection.prepareStatement("SELECT * from USERS where USERNAME = ?");
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next())
+            {
+                user = new User(rs.getString("USERNAME"), rs.getString("PASSWORD"), rs.getString("FIRST_NAME"), rs.getString("LAST_NAME"), rs.getString("USERTYPE"));
+                user.setID(rs.getInt("ID"));
+            }
 
-    }
-    public void update(String[] str) {
-        PreparedStatement ps = null;
-        try {
-            ps = connection.prepareStatement("Update Users Set password=? where username=?",PreparedStatement.RETURN_GENERATED_KEYS);
-            ps.setString(1, str[1].trim());
-            ps.setString(2, str[0].trim());
-            ps.executeUpdate();
 
-            ps.close();
-            System.out.println("1 rows updated.");
-        } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    public void delete(String user){
-
-        String query = "DELETE FROM users " +
-                "WHERE username = '"+user.trim()+"'";
-
-        try {
-            statement = connection.createStatement();
-            statement.executeUpdate(query);
-        }
-        catch(SQLException e) {
-            System.out.println("way way"+e);
-            //results = e.toString();
-        }
-    }
-    public void closeAll(){
-        try {
-            rs.close();
-            statement.close();
-            //connection.close();
-        }
-        catch(SQLException e) {
+        } catch (Exception e)
+        {
             System.out.println(e);
+        }
+        return user;
+    }
+
+    public void addUser(String fn, String ln, String pass, String un, String r)
+    {
+
+        try
+        {
+
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO users(USERNAME, PASSWORD, USERTYPE, FIRST_NAME, LAST_NAME) VALUES (?, ?, ?, ?, ?)");
+            stmt.setString(1, un);
+            stmt.setString(2, pass);
+            stmt.setString(3, r);
+            stmt.setString(4, fn);
+            stmt.setString(5, ln);
+
+            // execute insert SQL stetement
+            stmt.executeUpdate();
+
+            stmt.close();
+
+
+        } catch (SQLException ex)
+        {
+            System.out.println("FAILED IN CREATING USER");
+        }
+    }
+
+    public User addCustomer(String fn, String ln, String pass, String un, String add)
+    {
+        this.addUser(fn, ln, pass, un, "CUSTOMER");
+        User user = this.findByName(un);
+
+        try
+        {
+
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO customer(ADDRESS, USER_ID) VALUES (?, ?)");
+            stmt.setString(1, add);
+            stmt.setInt(2, user.getID());
+
+            // execute insert SQL stetement
+            stmt.executeUpdate();
+
+            stmt.close();
+
+
+        } catch (SQLException ex)
+        {
+            System.out.println("FAILED IN CREATING CUSTOMER");
+        }
+
+        return user;
+    }
+
+    public void updateUser(User user) {
+        try
+        {
+
+            PreparedStatement stmt = connection.prepareStatement("UPDATE users set username = ?, password = ?, first_name = ?, last_name = ? WHERE id = ?");
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getPassword());
+            stmt.setString(3, user.getFirstName());
+            stmt.setString(4, user.getLastName());
+            stmt.setInt(5, user.getID());
+
+            // execute insert SQL stetement
+            stmt.executeUpdate();
+
+            stmt.close();
+
+        } catch (SQLException ex)
+        {
+            System.out.println("FAILED IN CREATING CUSTOMER");
         }
     }
 

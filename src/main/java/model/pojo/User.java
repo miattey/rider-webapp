@@ -1,12 +1,19 @@
 package model.pojo;
 
+
+
 public class User {
 
+
     private int ID;
+
+
     private String password;
     private String usertype;
     private String firstName;
     private String lastName;
+
+
     private String username;
 
     public User(){
@@ -30,6 +37,7 @@ public class User {
         this.usertype = usertype;
 
     }
+
 
 
     public int getID() {

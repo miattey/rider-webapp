@@ -39,7 +39,7 @@
 
         .form-signin {
             width: 100%;
-            max-width: 400px;
+            max-width: 600px;
             padding: 15px;
             margin: auto;
         }
@@ -70,7 +70,7 @@
 <body class="text-center">
 
 <main class="form-signin">
-    <form action="login" method="POST">
+    <form action="register" method="POST">
         <div class="bg-dark align-items-center p-3 my-3 text-white shadow-sm">
             <div>
                 <img class="" src="img/LOGO2.png" alt="" width="" height="60">
@@ -85,51 +85,56 @@
         </div>
 
         <div class="card p-3">
-            <h1 class="h4 mb-2 fw-normal">Please sign in</h1>
+            <h1 class="h4 mb-2 fw-normal">Create a New Account</h1>
             <br>
+
             <c:choose>
-                <c:when test="${not empty errMessageLogin}">
-                    <div class='alert alert-danger'><c:out value="${errMessageLogin}"/></div>
+                <c:when test="${not empty errMessageRegister}">
+                    <div class='alert alert-danger'><c:out value="${errMessageRegister}" /></div>
                 </c:when>
             </c:choose>
 
-
-            <div class="form-floating">
-                <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
+            <div class="form-floating m-1">
+                <input type="text" name="username" class="form-control" id ="floatingInput" placeholder="Username" autofocus="autofocus" required>
                 <label for="floatingInput">Username</label>
             </div>
-            <div class="form-floating">
-                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Password</label>
+
+            <div class="form-floating m-1">
+                <input type="password" name="password" class="form-control" id ="floatingInput2"  placeholder="password" autofocus="autofocus" required>
+                <label for="floatingInput2">Pasword</label>
             </div>
 
-            <button class="w-100 btn btn-lg btn-danger"  type="submit">Login</button>
-            <p class="mt-3 mb-3 text-muted"><a href="register" class="link-dark">Sign up for Rider</a></p>
+            <div class="form-floating m-1">
+                <input type="password" name="password2" class="form-control" id ="floatingInput3"  placeholder="Confirm Password" autofocus="autofocus" required>
+                <label for="floatingInput3">Confirm Password</label>
+            </div>
+
+            <div class="form-floating m-1">
+                <input type="text" name="firstName" class="form-control" id ="floatingInput4"  placeholder="First Name" autofocus="autofocus" required>
+                <label for="floatingInput4">First Name</label>
+            </div>
+
+            <div class="form-floating m-1">
+                <input type="text" name="lastName" class="form-control" id ="floatingInput5"  placeholder="Last Name" autofocus="autofocus" required>
+                <label for="floatingInput5">Last Name</label>
+            </div>
+
+            <div class="form-floating m-1">
+                <input type="text" name="address" class="form-control" id ="floatingInput6"  placeholder="Address" autofocus="autofocus" required>
+                <label for="floatingInput6">Address</label>
+            </div>
+
+
+
+            <button class="w-100 btn btn-lg btn-danger mt-2"  type="submit">Register</button>
+
+            <p class="mt-3 mb-3 text-muted">Already a member? <a href="login" class="link-dark">Login</a></p>
+
 
         </div>
     </form>
-    <p class="mt-3 mb-3 text-muted"  data-bs-toggle="modal" data-bs-target="#exampleModal">About Us</p>
 </main>
-<!-- Button trigger modal -->
 
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">About Us</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Quickly and easily get started with Bootstrap's compiled, production-ready files with this barebones example featuring some basic HTML and helpful links. Download all our examples to get started.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 
