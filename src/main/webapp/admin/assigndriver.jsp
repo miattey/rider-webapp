@@ -43,6 +43,12 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Recent Bookings</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Add Driver</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Manage Users</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Reports</a>
                             <ul class="dropdown-menu">
@@ -53,9 +59,7 @@
                                 <li><a class="dropdown-item" href="#">Separated link</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Manage Users</a>
-                        </li>
+
                     </ul>
 
 
@@ -112,7 +116,7 @@
                                             <td><c:out value="${selectedbooking.customer_id}"/></td>
 
 
-                                            <td><fmt:formatNumber value = "${selectedbooking.fee / 100}" type = "currency"/></td>
+                                            <td><fmt:formatNumber value = "${selectedbooking.fee}" /></td>
 
                                             <form method="post"action="assigndriver">
 

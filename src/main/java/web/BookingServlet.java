@@ -74,13 +74,15 @@ public class BookingServlet extends HttpServlet {
         Date date = Date.valueOf(request.getParameter("date").toString());
         String timestr = request.getParameter("time");
         String distancetext = request.getParameter("distanceqw");
+        String fee_amount = request.getParameter("fare_amounthidden");
+
 
         Time time = Time.valueOf(timestr + ":00");
 
 
         double distance = Double.parseDouble(distancetext);
 
-        int fee = 1233;
+        int fee = Integer.parseInt(fee_amount);
 
         //working on
         if (stage.equals("new")) {

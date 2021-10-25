@@ -13,6 +13,8 @@ public class AssignDriverServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
+
     }
 
     @Override
@@ -29,6 +31,8 @@ public class AssignDriverServlet extends HttpServlet {
         bookingDAO.connect(connection);
 
         bookingDAO.updateDriverID(bookingid,selectedDriverID);
+
+        
 
         response.sendRedirect(request.getContextPath() + "/admindashboard");
 

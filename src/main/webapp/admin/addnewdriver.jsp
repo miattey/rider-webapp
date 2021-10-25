@@ -25,11 +25,6 @@
 
 
     </style>
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-        </symbol>
-    </svg>
 
 </head>
 <body>
@@ -46,10 +41,10 @@
                 <div class="text-end justify-content-left">
                     <ul class="nav nav-pills">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Recent Bookings</a>
+                            <a class="nav-link " aria-current="page" href="admindashboard">Recent Bookings</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="addnewdriver">Add Driver</a>
+                            <a class="nav-link active" href="#">Add Driver</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Manage Users</a>
@@ -97,57 +92,61 @@
                 <div class="d-flex text-muted pt-3 border-bottom" >
                     <div class="container">
 
+                        <form action="" method="POST">
+                        <div class="card p-3">
+                            <h1 class="h4 mb-2 fw-normal">Add New Driver</h1>
+                            <br>
+
+                            <c:choose>
+                                <c:when test="${not empty errMessage}">
+                                    <div class='alert alert-danger'><c:out value="${errMessage}" /></div>
+                                </c:when>
+                            </c:choose>
+
+                            <div class="form-floating m-1">
+                                <input type="text" name="username" class="form-control" id ="floatingInput" placeholder="Username" autofocus="autofocus" required>
+                                <label for="floatingInput">Username</label>
+                            </div>
+
+                            <div class="form-floating m-1">
+                                <input type="password" name="password" class="form-control" id ="floatingInput2"  placeholder="password" autofocus="autofocus" required>
+                                <label for="floatingInput2">Pasword</label>
+                            </div>
+
+                            <div class="form-floating m-1">
+                                <input type="password" name="password2" class="form-control" id ="floatingInput3"  placeholder="Confirm Password" autofocus="autofocus" required>
+                                <label for="floatingInput3">Confirm Password</label>
+                            </div>
+
+                            <div class="form-floating m-1">
+                                <input type="text" name="firstName" class="form-control" id ="floatingInput4"  placeholder="First Name" autofocus="autofocus" required>
+                                <label for="floatingInput4">First Name</label>
+                            </div>
+
+                            <div class="form-floating m-1">
+                                <input type="text" name="lastName" class="form-control" id ="floatingInput5"  placeholder="Last Name" autofocus="autofocus" required>
+                                <label for="floatingInput5">Last Name</label>
+                            </div>
+
+                            <div class="form-floating m-1">
+                                <input type="text" name="address" class="form-control" id ="floatingInput6"  placeholder="Address" autofocus="autofocus" required>
+                                <label for="floatingInput6">Address</label>
+                            </div>
+
+                            <div class="form-floating m-1">
+                                <input type="text" name="address" class="form-control" id ="floatingInput6"  placeholder="Address" autofocus="autofocus" required>
+                                <label for="floatingInput6">Registration No.</label>
+                            </div>
 
 
-                        <c:choose>
-                            <c:when test="${not empty mybookings}" >
 
-                                <table id="todays_journeys" class="table table-striped table-bordered" style="width:100%">
-                                    <thead>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Time</th>
-                                        <th>Start Address</th>
-                                        <th>Destination</th>
-                                        <th>Custome ID</th>
-                                        <th>Fee (MVR)</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <c:forEach items="${mybookings}" var="j">
-                                        <tr>
-                                            <td><fmt:formatDate type = "date" value = "${j.date}" /></td>
-                                            <td><fmt:formatDate type = "time" pattern = "HH:mm" value = "${j.time}" /></td>
-                                            <td><c:out value="${j.start}"/></td>
-                                            <td><c:out value="${j.end}"/></td>
-                                            <td><c:out value="${j.customer_id}"/></td>
+                            <button class="w-100 btn btn-lg btn-danger mt-2"  type="submit">Add New Driver</button>
 
 
-                                            <td><fmt:formatNumber value = "${j.fee}" /></td>
 
 
-                                            <td><form class="form-inline" method="POST" action="admindashboard" >
-                                                <button type="submit" class="btn btn-info mb-2 btn-sm" name="assigndriver" value="<c:out value="${j.id}"/>">Assign Driver</button>&nbsp;
-
-                                            </form></td>
-
-
-                                        </tr>
-                                    </c:forEach>
-                                    </tbody>
-                                </table>
-
-                            </c:when>
-                            <c:when test="${empty mybookings}" >
-                                <div class="alert alert-warning d-flex align-items-center" role="alert">
-                                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-                                    <div>
-                                        No Bookings to show!
-                                    </div>
-                                </div>
-                            </c:when>
-                        </c:choose>
+                        </div>
+                    </form>
 
                     </div>
                 </div>

@@ -75,18 +75,8 @@ public class AdminDashboardServlet extends HttpServlet {
         List<Driver> alldrivers = driversDAO.getAllDrivers();
 
 
-
-
-
-
-
-
-
-
-
         request.setAttribute("alldrivers", alldrivers);
         request.setAttribute("selectedbooking", selected);
-
 
 
         request.getRequestDispatcher("admin/assigndriver.jsp").forward(request, response);

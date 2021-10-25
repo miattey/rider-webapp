@@ -4,16 +4,10 @@ import model.pojo.Customer;
 import model.pojo.User;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.Statement;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Time;
-import static java.sql.Types.NULL;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

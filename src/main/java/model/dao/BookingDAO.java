@@ -1,24 +1,10 @@
 package model.dao;
 
 import model.pojo.Booking;
-import model.pojo.Customer;
 import model.pojo.Driver;
-import model.pojo.User;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
-
-import javax.servlet.http.HttpSession;
-import java.awt.print.Book;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.math.BigDecimal;
-import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class BookingDAO {
 
