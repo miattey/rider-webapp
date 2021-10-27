@@ -1,5 +1,8 @@
 <%@ page import="model.pojo.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +40,7 @@
                 <div class="text-end justify-content-left">
                     <ul class="nav nav-pills" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Tab 1</button>
+                            <button class="nav-link active position-relative" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Upcoming Jobs </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Tab 2</button>
@@ -69,18 +72,60 @@
     </div>
 
 
-
-
     <div class="container p-3 bg-body rounded shadow-sm">
 
         <div class="tab-content" id="pills-tabContent">
+
+
+            <!-- upcoming jobs -->
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <div>
-                    <h2>Driver Dashbaord</h2>
-                    <h3>Functionalities for driver dashboard goes here</h3>
+
+                <div class="container">
+
+
+
+                            <table id="todays_journeys" class="table table-striped table-bordered" style="width:100%">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Start Address</th>
+                                    <th>Destination</th>
+                                    <th>Customer Details</th>
+                                    <th>Fee (MVR)</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+
+                                    <tr>
+                                        <td><span class="badge rounded-pill bg-warning text-dark">1212</span></td>
+                                        <td>e3e3</td>
+                                        <td>3e3</td>
+                                        <td>3ee3</td>
+                                        <td>e3e</td>
+                                        <td>e3e</td>
+                                        <td>3e3e</td>
+                                        <td></td>
+
+
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+
+
+
                 </div>
             </div>
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+            <!-- ends here -->
+
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+            </div>
 
         </div>
 
