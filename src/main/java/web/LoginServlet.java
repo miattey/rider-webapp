@@ -89,7 +89,7 @@ public class LoginServlet extends HttpServlet {
                         try
                         {
                             //Redirect to the home page
-                            response.sendRedirect(request.getContextPath()+"/TestServlet");
+                            response.sendRedirect(request.getContextPath()+"/driverdashboard");
                         } catch (IOException ex)
                         {
 

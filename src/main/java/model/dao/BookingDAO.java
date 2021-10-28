@@ -116,9 +116,8 @@ public class BookingDAO {
         {
 
             //Statement to find all drivers
-            PreparedStatement str = connection.prepareStatement("select * from BOOKING inner join DRIVER on BOOKING.DRIVER_ID "
-                    + "= DRIVER.id inner join CUSTOMER on BOOKING.CUSTOMER_ID "
-                    + "= CUSTOMER.ID where DRIVER.id = ? order by BOOKING.date, BOOKING.time");
+            PreparedStatement str = connection.prepareStatement("select * from BOOKING inner join DRIVER on booking.DRIVER_ID "
+                    + "= driver.ID where driver.ID = ? order by booking.date DESC, booking.time");
             str.setInt(1, id);
             ResultSet rs = str.executeQuery();
             System.out.println(rs.toString());
@@ -273,6 +272,26 @@ public class BookingDAO {
 
             PreparedStatement stmt = connection.prepareStatement("UPDATE BOOKING set BOOKING.DRIVER_ID = ? WHERE BOOKING.ID = ?");
             stmt.setInt(1, driverid);
+            stmt.setInt(2, bookingid);
+
+
+            // execute insert SQL stetement
+            stmt.executeUpdate();
+
+            stmt.close();
+
+        } catch (SQLException ex)
+        {
+            System.out.println("FAILED IN CREATING CUSTOMER");
+        }
+    }
+
+    public void updateBookingStatus(int bookingid, int status) {
+        try
+        {
+
+            PreparedStatement stmt = connection.prepareStatement("UPDATE BOOKING set BOOKING.STATUS = ? WHERE BOOKING.ID = ?");
+            stmt.setInt(1, status);
             stmt.setInt(2, bookingid);
 
 

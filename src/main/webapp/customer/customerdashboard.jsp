@@ -92,7 +92,7 @@
 
 
 
-            <div class="d-flex text-muted pt-3 border-bottom" >
+            <div class="d-flex text-muted pt-3" >
                 <div class="container">
                     <c:choose>
                         <c:when test="${not empty succCust}">
@@ -110,6 +110,7 @@
                                 <table id="todays_journeys" class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Date</th>
                                         <th>Time</th>
                                         <th>Start Address</th>
@@ -122,6 +123,7 @@
                                     <tbody>
                                     <c:forEach items="${mybookings}" var="j">
                                         <tr>
+                                            <td><c:out value="${j.id}"/></td>
                                             <td><fmt:formatDate type = "date" value = "${j.date}" /></td>
                                             <td><fmt:formatDate type = "time" pattern = "HH:mm" value = "${j.time}" /></td>
                                             <td><c:out value="${j.start}"/></td>
@@ -147,13 +149,16 @@
 
                                                 <td>
                                                     <c:if test="${status == '0'}">
-                                                    <span class="badge bg-danger">Pending</span>
+                                                    <span class="badge bg-dark">Pending</span>
                                                     </c:if>
                                                     <c:if test="${status == '1'}">
                                                         <span class="badge bg-success">Approved</span>
                                                     </c:if>
                                                     <c:if test="${status == '2'}">
-                                                        <span class="badge bg-primary">Paid</span>
+                                                        <span class="badge bg-info">Paid</span>
+                                                    </c:if>
+                                                    <c:if test="${status == '3'}">
+                                                        <span class="badge bg-danger">Rejected</span>
                                                     </c:if>
                                                 </td>
 
@@ -163,7 +168,7 @@
                                     </c:forEach>
                                     </tbody>
                                 </table>
-                                <hr>
+
                             </c:when>
                             <c:when test="${empty mybookings}" >
                                 <div class="alert alert-warning d-flex align-items-center" role="alert">

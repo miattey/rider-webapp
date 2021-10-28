@@ -89,7 +89,7 @@
 
 
             <div class="container p-3 bg-body rounded shadow-sm">
-                <div class="d-flex text-muted pt-3 border-bottom" >
+                <div class="d-flex text-muted pt-3" >
                     <div class="container">
 
                             <div class="mb-2">Booking Reference: <span class="badge bg-warning text-dark"> <c:out value="${selectedbooking.id}"/></span></div>
@@ -122,7 +122,7 @@
 
 
                                             <td>
-                                                <select id="isTitles" name="isTitles"> class="form-select" aria-label="Default select example">
+                                                <select id="isTitles" name="isTitles" class="form-select form-select-sm" aria-label="Default select example">
                                                     <option selected>Select a Driver..</option>
                                                     <c:choose>
                                                         <c:when test="${not empty alldrivers}" >

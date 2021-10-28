@@ -3,31 +3,18 @@ package web;
 
 import model.dao.BookingDAO;
 import model.dao.CustomerDAO;
-import model.dao.DriverDAO;
-import model.dao.UserDAO;
+
 import model.pojo.Booking;
 import model.pojo.Customer;
-import model.pojo.Driver;
+
 import model.pojo.User;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.Time;

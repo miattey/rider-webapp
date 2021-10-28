@@ -1,15 +1,6 @@
 package model.pojo;
 
-import model.dao.CustomerDAO;
-import model.dao.DriverDAO;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.sql.Connection;
 import java.sql.Time;
 import java.util.Date;
 
