@@ -35,15 +35,15 @@ public class AddDriverServlet extends HttpServlet {
             String firstName = request.getParameter("firstname");
             String lastName = request.getParameter("lastname");
             String registrationNo = request.getParameter("vehicleregno");
-            String address = request.getParameter("address");
+
 
 
             if (userdao.findByName(username) != null) {
-                request.setAttribute("errormessage", "The username " + username + " is already taken");
+                request.setAttribute("errormessage", "The username " + username + " is already assigned for a driver");
                 request.getRequestDispatcher("admin/addnewdriver.jsp").forward(request, response);
 
             } else {
-                userdao.addUser(firstName, lastName, registrationNo, username, "DRIVER");
+                userdao.addUser(firstName, lastName, password, username, "DRIVER");
                 User u = userdao.findByName(username);
                 driverdao.newDriver(registrationNo, u.getID());
                 response.sendRedirect(request.getContextPath() + "/managedrivers");

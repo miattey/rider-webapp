@@ -84,18 +84,18 @@ public class UserDAO {
         return user;
     }
 
-    public void addUser(String fn, String ln, String pass, String un, String r)
+    public void addUser(String firstname, String lastname, String password, String username, String usertype)
     {
 
         try
         {
 
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO users(USERNAME, PASSWORD, USERTYPE, FIRST_NAME, LAST_NAME) VALUES (?, ?, ?, ?, ?)");
-            stmt.setString(1, un);
-            stmt.setString(2, pass);
-            stmt.setString(3, r);
-            stmt.setString(4, fn);
-            stmt.setString(5, ln);
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            stmt.setString(3, usertype);
+            stmt.setString(4, firstname);
+            stmt.setString(5, lastname);
 
             // execute insert SQL stetement
             stmt.executeUpdate();

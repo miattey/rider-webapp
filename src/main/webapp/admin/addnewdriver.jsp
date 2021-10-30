@@ -134,10 +134,7 @@
                                     <label for="inputLast" class="form-label">Last Name</label>
                                     <input type="text"  name="lastname" class="form-control" id="inputLast" placeholder="" required>
                                 </div>
-                                <div class="col-12">
-                                    <label for="inputAddress" class="form-label">Address</label>
-                                    <input type="text" name="address" class="form-control" id="inputAddress" placeholder="Apartment, studio, or floor" required>
-                                </div>
+
                                 <div class="col-12">
                                     <label for="inputVehicleReg" class="form-label">Vehicle Registration Number</label>
                                     <input type="text" name="vehicleregno" class="form-control" id="inputVehicleReg" placeholder="AA0-0000" required>
