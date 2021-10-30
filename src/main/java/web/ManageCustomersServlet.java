@@ -22,11 +22,41 @@ public class ManageCustomersServlet extends HttpServlet {
         CustomerDAO customerdao = new CustomerDAO();
         customerdao.connect(connection);
 
+        String spageid=request.getParameter("page");
+        int pageid=Integer.parseInt(spageid);
+        int total=10;
+
+        if(pageid==1){}
+        else{
+            pageid=pageid-1;
+            pageid=pageid*total+1;
+        }
+
+
+        List<Customer> customers = customerdao.getAllCustomersPagination(pageid, total);
+        List<Customer> customertotal = customerdao.getAllCustomers();
+
+        int totalNumber = customertotal.size();
+
+        int totalpages  = (totalNumber + total - 1) / total;
+
+
+
+        request.setAttribute("all_customers", customers);
+        request.setAttribute("pageID", pageid);
+        request.setAttribute("pages", totalpages);
+
+        request.getRequestDispatcher("admin/managecustomers.jsp").forward(request, response);
+
+
+        /**
         List<Customer> customers = customerdao.getAllCustomers();
 
         request.setAttribute("all_customers", customers);
 
         request.getRequestDispatcher("admin/managecustomers.jsp").forward(request, response);
+        **/
+
 
     }
 

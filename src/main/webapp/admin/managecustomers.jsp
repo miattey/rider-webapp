@@ -47,7 +47,7 @@
                             <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Manage Users</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="managedrivers">Manage Drivers</a></li>
-                                <li><a class="dropdown-item" href="#">List All Customers</a></li>
+                                <li><a class="dropdown-item" href="managecustomers?page=1">List All Customers</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -102,40 +102,69 @@
             <p>Details of all the registered customers</p>
         </div>
         <br>
+        <c:choose>
+        <c:when test="${empty all_customers}">
+            <div class="alert alert-warning d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                <div>
+                    No users to show!
+                </div>
+            </div>
 
-        <table id="" class="table table-striped table-bordered" style="width:100%">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Address</th>
+        </c:when>
+            <c:when test="${not empty all_customers}">
+                <table id="" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Address</th>
 
-            </tr>
-            </thead>
-            <tbody>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-            <c:forEach items="${all_customers}" var="customer">
-                <tr>
-                    <td><c:out value="${customer.ID}"/></td>
-                    <td><c:out value="${customer.username}"/></td>
-                    <td><c:out value="${customer.firstName}"/></td>
-                    <td><c:out value="${customer.lastName}"/></td>
-                    <td><c:out value="${customer.address}"/></td>
+                    <c:forEach items="${all_customers}" var="customer">
+                        <tr>
+                            <td><c:out value="${customer.ID}"/></td>
+                            <td><c:out value="${customer.username}"/></td>
+                            <td><c:out value="${customer.firstName}"/></td>
+                            <td><c:out value="${customer.lastName}"/></td>
+                            <td><c:out value="${customer.address}"/></td>
 
-                    </td>
-                </tr>
-            </c:forEach>
+                            </td>
+                        </tr>
+                    </c:forEach>
 
-            </tbody>
-        </table>
-
-
-
-
+                    </tbody>
+                </table>
 
     </div>
+
+                <div class="container mt-3">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <c:forEach var = "i" begin = "1" end="${pages}">
+                                <li class="page-item"><a class="page-link" href="managecustomers?page=<c:out value = "${i}"/>"> <c:out value = "${i}"/></a></li>
+                            </c:forEach>
+                        </ul>
+                    </nav>
+                </div>
+
+
+
+            </c:when>
+
+        </c:choose>
+
+
+
+
+
+
+
 
 
 
