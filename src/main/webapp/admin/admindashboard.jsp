@@ -46,22 +46,20 @@
                 <div class="text-end justify-content-left">
                     <ul class="nav nav-pills">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Recent Bookings</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="addnewdriver">Add Driver</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Manage Users</a>
+                            <a class="nav-link active" aria-current="page" href="admindashboard">Recent Bookings</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Reports</a>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Manage Users</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="managedrivers">Manage Drivers</a></li>
+                                <li><a class="dropdown-item" href="#">List All Customers</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Generate Reports</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Recent Bookings</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Separated link</a></li>
                             </ul>
                         </li>
 
