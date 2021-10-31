@@ -94,6 +94,32 @@ public class CustomerDAO {
         return customers;
     }
 
+    public List<Customer> getAllCustomersPagination(int start,int total) {
+        List<Customer> customers = new ArrayList<>();
+        try {
+
+            //Statement to find all customers
+            PreparedStatement str = connection.prepareStatement("select * from customer  inner join users on customer.USER_ID = users.ID offset "+(start-1)+" rows fetch first "+total+" rows only");
+            ResultSet rs = str.executeQuery();
+            System.out.println(rs.toString());
+            while (rs.next())
+            {  //iterate through response creating new customers and adding to list
+                Customer d = new Customer(rs.getInt("id"),rs.getInt("user_id"),rs.getString("first_name"),rs.getString("last_name"),rs.getString("username"),rs.getString("address"));
+                customers.add(d);
+            }
+
+            str.close();
+
+        } catch (Exception e)
+        {
+            System.out.println(e);
+        }
+
+
+
+        return customers;
+    }
+
     public void updateCustomer(Customer c)
     {
         try
