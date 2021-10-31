@@ -84,23 +84,56 @@
     </div>
 
 
-    <div class="container">
 
+        <div class="container mt-3">
 
-        <!-- upcoming jobs -->
+            <div class="row">
+                <div class="bg-light p-3 border-bottom shadow-sm align-middle">
 
-        <div class="row">
-            <div class="col-md-12">
+                    <h1 class="h4 mb-2 fw-normal ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+                            <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z"/>
+                        </svg>
+                        DAILY BOOKINGS OVERVIEW</h1>
+                </div>
 
-                <a  role="button" class="btn btn-secondary float-end" href="addnewdriver">Add New Driver </a>
             </div>
 
-        </div>
+            <div class="row">
+                <div class="col-md-6 p-3 bg-body shadow-sm">
+                    <!-- Title -->
+                    <h6 class="text-uppercase text-muted mb-2">
+                        TOTAL INCOME
+                    </h6>
 
-        <!-- ends here -->
+                    <!-- Heading -->
+                    <span class="h2 mb-0">
+                      MVR 24,500
+                    </span>
 
+                    <!-- Badge -->
+                    <span class="badge bg-success-soft mt-n1">
+                      +3.5%
+                    </span>
+                </div>
+                <div class="col-md-6 p-3 bg-body shadow-sm">
+                    <!-- Title -->
+                    <h6 class="text-uppercase text-muted mb-2">
+                        TOTAL CUSTOMERS SERVED
+                    </h6>
 
+                    <!-- Heading -->
+                    <span class="h2 mb-0">
+                      11
+                    </span>
 
+                    <!-- Badge -->
+                    <span class="badge bg-success-soft mt-n1">
+                      +3.5%
+                    </span>
+                </div>
+
+            </div>
 
     </div>
 
@@ -109,12 +142,13 @@
         <table id="" class="table table-striped table-bordered" style="width:100%">
             <thead>
             <tr>
-                <th>Driver ID</th>
-                <th>Username</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Vehicle Registration No.</th>
-                <th>Action</th>
+                <th>Booking ID</th>
+                <th>Driver</th>
+                <th>Customer ID</th>
+                <th>Start</th>
+                <th>Destinatiom</th>
+                <th>Fee</th>
+
             </tr>
             </thead>
             <tbody>
