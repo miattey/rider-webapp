@@ -211,7 +211,39 @@ public class BookingDAO {
         {
 
             //Statement to find all drivers
-            PreparedStatement str = connection.prepareStatement("select * from driver inner join users on driver.USER_ID = users.ID");
+            PreparedStatement str = connection.prepareStatement("select * from BOOKING ");
+            ResultSet rs = str.executeQuery();
+            System.out.println(rs.toString());
+            while (rs.next())
+            {  //iterate through response and building journey list
+                js.add(new Booking(rs.getInt("id"), rs.getInt("customer_id"),
+                        rs.getInt("driver_id"), rs.getString("start"),
+                        rs.getString("destination"), rs.getDouble("distance"),
+                        rs.getInt("status"), rs.getTime("time"),
+                        rs.getDate("date"), rs.getInt("fee")));
+            }
+
+            str.close();
+
+
+        } catch (Exception e)
+        {
+            System.out.println(e);
+        }
+
+        return js;
+    }
+
+    public List<Booking> bookingsByDate(String date)
+    {
+        ArrayList<Booking> js = new ArrayList<>();
+
+        try
+        {
+
+            //Statement to find all drivers
+            PreparedStatement str = connection.prepareStatement("select * from BOOKING where Booking.date = ?");
+            str.setString(1, date);
             ResultSet rs = str.executeQuery();
             System.out.println(rs.toString());
             while (rs.next())
