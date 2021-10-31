@@ -53,8 +53,8 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Generate Reports</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Daily Report</a></li>
-                                <li><a class="dropdown-item" href="#">Generate Driver's Daily Report</a></li>
+                                <li><a class="dropdown-item" href="dailyreport">Daily Report</a></li>
+                                <li><a class="dropdown-item" href="generatereport">Generate Driver's Daily Report</a></li>
                             </ul>
                         </li>
 
@@ -86,117 +86,28 @@
 
 
     <div class="container mt-3">
-        <div class="row">
-            <div class="bg-light p-3 border-bottom shadow-sm align-middle">
-                <h1 class="h4 mb-2 fw-normal ">DAILY BOOKINGS OVERVIEW</h1>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-6 p-3 bg-body shadow-sm">
-                <!-- Title -->
-                <h6 class="text-uppercase text-muted mb-2">
-                    DATE
-                </h6>
 
-                <!-- Heading -->
-                <span class="h2 mb-0">
-                    <c:out value="${date}" />
-                    </span>
-
-                <!-- Badge -->
-
-            </div>
-            <div class="col-md-6 p-3 bg-body shadow-sm">
-                <!-- Title -->
-                <h6 class="text-uppercase text-muted mb-2">
-                    TOTAL BOOKINGS FOR THE DAY
-                </h6>
-
-                <!-- Heading -->
-                <span class="h2 mb-0">
-                       <c:out value="${totalbookings}" />
-                    </span>
-
-                <!-- Badge -->
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="container mt-3 p-3 bg-body rounded shadow-sm">
-        <c:choose>
-            <c:when test="${not empty dailybookings}">
-                <table id="" class="table table-striped table-bordered" style="width:100%">
-                    <thead>
-                    <tr>
-                        <th>Booking ID</th>
-                        <th>Driver ID</th>
-                        <th>Customer ID</th>
-                        <th>Start</th>
-                        <th>Destinatiom</th>
-                        <th>Time</th>
-                        <th>Status</th>
-                        <th>Fee</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    <c:forEach items="${dailybookings}" var="j">
-                        <tr>
-                            <td><c:out value="${j.id}"/></td>
-                            <td><c:out value="${j.driver_id}"/></td>
-                            <td><c:out value="${j.customer_id}"/></td>
-                            <td><c:out value="${j.start}"/></td>
-                            <td><c:out value="${j.end}"/></td>
-                            <td><fmt:formatDate type = "time" pattern = "HH:mm" value = "${j.time}" /></td>
-                            <td>
-                                <c:set var = "status" value = "${j.status}" />
-                                <c:if test="${status == '0'}">
-                                    <span class="badge bg-dark">Pending</span>
-                                </c:if>
-                                <c:if test="${status == '1'}">
-                                    <span class="badge bg-success">Approved</span>
-                                </c:if>
-                                <c:if test="${status == '2'}">
-                                    <span class="badge bg-info">Paid</span>
-                                </c:if>
-                                <c:if test="${status == '3'}">
-                                    <span class="badge bg-danger">Rejected</span>
-                                </c:if>
-                            </td>
-                            <td><fmt:formatNumber value = "${j.fee}"  /></td>
-                        </tr>
-                    </c:forEach>
-
-                    </tbody>
-                </table>
-            </c:when>
-
-            <c:when test="${empty dailybookings}">
-                <div class="alert alert-warning d-flex alight-items-center" role="alert">
-                    <div>No bookings to show!</div>
+            <form method="POST" action="generatereport">
+                <div class="row bg-body shadow-sm p-3 mb-2">
+                    <div class="col-md-10">
+                        <select id="driverID" name="driverID" class="form-select form-select-sm" aria-label="Default select example" required>
+                            <c:choose>
+                                <c:when test="${not empty alldrivers}" >
+                                    <c:forEach items="${alldrivers}" var="n">
+                                        <option value="<c:out value="${n.getID()}"/>"><c:out value="${n.getFirstName()}"/> <c:out value="${n.getLastName()}"/> - (<c:out value="${n.getReg()}"/>)</option>
+                                    </c:forEach>
+                                </c:when>
+                            </c:choose>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-danger mb-2" >Generate Report</button>&nbsp;
+                    </div>
                 </div>
-            </c:when>
-
-
-
-
-        </c:choose>
-
-
+            </form>
 
     </div>
-
-
-
-
-
-
-
-
 
 
 
