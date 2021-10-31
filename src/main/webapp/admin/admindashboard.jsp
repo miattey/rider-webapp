@@ -52,7 +52,7 @@
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Manage Users</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="managedrivers">Manage Drivers</a></li>
-                                <li><a class="dropdown-item" href="#">List All Customers</a></li>
+                                <li><a class="dropdown-item" href="managecustomers?page=1">List All Customers</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

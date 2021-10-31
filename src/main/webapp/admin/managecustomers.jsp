@@ -89,14 +89,6 @@
 
         <!-- upcoming jobs -->
 
-        <div class="row">
-            <div class="col-md-12">
-
-                <a  role="button" class="btn btn-secondary float-end" href="addnewdriver">Add New Driver </a>
-            </div>
-
-        </div>
-
         <!-- ends here -->
 
 
@@ -105,44 +97,74 @@
     </div>
 
     <div class="container mt-3 p-3 bg-body rounded shadow-sm">
+        <div class="bg-light p-3 border-bottom">
+            <h1 class="h4 mb-2 fw-normal">Customer List</h1>
+            <p>Details of all the registered customers</p>
+        </div>
+        <br>
+        <c:choose>
+        <c:when test="${empty all_customers}">
+            <div class="alert alert-warning d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                <div>
+                    No users to show!
+                </div>
+            </div>
 
-        <table id="" class="table table-striped table-bordered" style="width:100%">
-            <thead>
-            <tr>
-                <th>Driver ID</th>
-                <th>Username</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Vehicle Registration No.</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
+        </c:when>
+            <c:when test="${not empty all_customers}">
+                <table id="" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Address</th>
 
-            <c:forEach items="${all_drivers}" var="driver">
-                <tr>
-                    <td><c:out value="${driver.ID}"/></td>
-                    <td><c:out value="${driver.username}"/></td>
-                    <td><c:out value="${driver.firstName}"/></td>
-                    <td><c:out value="${driver.lastName}"/></td>
-                    <td><span class="badge rounded-pill bg-warning text-dark"><c:out value="${driver.reg}"/></span></td>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-                    <td>
-                        <form class="form-inline" method="POST" action="managedrivers" >
-                            <button type="submit" class="btn-sm btn-danger mb-2" name="delete_id" value="<c:out value="${driver.ID}"/>">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            </c:forEach>
+                    <c:forEach items="${all_customers}" var="customer">
+                        <tr>
+                            <td><c:out value="${customer.ID}"/></td>
+                            <td><c:out value="${customer.username}"/></td>
+                            <td><c:out value="${customer.firstName}"/></td>
+                            <td><c:out value="${customer.lastName}"/></td>
+                            <td><c:out value="${customer.address}"/></td>
 
-            </tbody>
-        </table>
+                            </td>
+                        </tr>
+                    </c:forEach>
 
-
-
-
+                    </tbody>
+                </table>
 
     </div>
+
+                <div class="container mt-3">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <c:forEach var = "i" begin = "1" end="${pages}">
+                                <li class="page-item"><a class="page-link" href="managecustomers?page=<c:out value = "${i}"/>"> <c:out value = "${i}"/></a></li>
+                            </c:forEach>
+                        </ul>
+                    </nav>
+                </div>
+
+
+
+            </c:when>
+
+        </c:choose>
+
+
+
+
+
+
+
 
 
 

@@ -43,20 +43,18 @@
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="admindashboard">Recent Bookings</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Add Driver</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Manage Users</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Manage Users</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="managedrivers">Manage Drivers</a></li>
+                                <li><a class="dropdown-item" href="managecustomers?page=1">List All Customers</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Reports</a>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Generate Reports</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Recent Bookings</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Separated link</a></li>
                             </ul>
                         </li>
 
@@ -134,10 +132,7 @@
                                     <label for="inputLast" class="form-label">Last Name</label>
                                     <input type="text"  name="lastname" class="form-control" id="inputLast" placeholder="" required>
                                 </div>
-                                <div class="col-12">
-                                    <label for="inputAddress" class="form-label">Address</label>
-                                    <input type="text" name="address" class="form-control" id="inputAddress" placeholder="Apartment, studio, or floor" required>
-                                </div>
+
                                 <div class="col-12">
                                     <label for="inputVehicleReg" class="form-label">Vehicle Registration Number</label>
                                     <input type="text" name="vehicleregno" class="form-control" id="inputVehicleReg" placeholder="AA0-0000" required>
