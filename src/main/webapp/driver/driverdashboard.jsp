@@ -35,29 +35,18 @@
 <main class="container">
     <div class="justify-content-center bg-dark d-flex align-items-center p-4 text-white bg-purple  shadow-sm">
         <img class="me-3" src="img/LOGO2.png" alt="" width="" height="60">
-
-
     </div>
+
     <div style="background-color:white;" class="px-3 py-2 border-bottom mb-3">
         <nav class="navbar navbar-light">
             <div class="container-fluid">
-
                 <div class="text-end justify-content-left">
-                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active position-relative" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Assigned Jobs </button>
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="driverdashboard">Assigned Jobs</a>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Tab 2</button>
-                        </li>
-
                     </ul>
-
-
                 </div>
-
-
-
                 <div class="d-flex">
                     <div class="flex-shrink-0 dropdown">
                         <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -69,27 +58,14 @@
                             <li class="dropdown-item"><a class="dropdown-item" href="logout">Sign out</a></li>
                         </ul>
                     </div>
-
-
                 </div>
             </div>
         </nav>
     </div>
 
-
     <div class="container p-3 bg-body rounded shadow-sm">
-
-        <div class="tab-content" id="pills-tabContent">
-
-
-            <!-- upcoming jobs -->
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-
-                <div class="container">
-
                     <c:choose>
                         <c:when test="${not empty myjobs}" >
-
                             <table id="todays_journeys" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                 <tr>
@@ -105,7 +81,6 @@
                                 </thead>
                                 <tbody>
                                 <c:forEach items="${myjobs}" var="j">
-
                                     <tr>
                                         <td><span class="badge bg-warning text-dark"><c:out value="${j.id}"/></span></td>
                                         <td><c:out value="${j.date}"/></td>
@@ -114,25 +89,20 @@
                                         <td><c:out value="${j.end}"/></td>
                                         <td><c:out value="${j.customer_id}"/></td>
                                         <td><c:out value="${j.fee}"/></td>
-                                        <td><form class="form-inline" method="POST" action="editbooking" >
-
-                                            <c:set var = "status" value = "${j.status}" />
-
-                                            <c:if test="${status == '0'}">
-                                                <button type="submit" class="btn btn-success mb-2 btn-sm " name="approve" value="<c:out value="${j.id}"/>">Approve</button>&nbsp;
-                                                <button type="submit" class="btn btn-danger mb-2 btn-sm" name="reject" value="<c:out value="${j.id}"/>">Reject</button>&nbsp;
-                                            </c:if>
-                                            <c:if test="${status == '1'}">
-                                                <button type="submit" class="btn btn-info mb-2 btn-sm" name="paid" value="<c:out value="${j.id}"/>">Job Complete</button>&nbsp;
-                                            </c:if>
-
-                                        </form></td>
-
-
+                                        <td>
+                                            <form class="form-inline" method="POST" action="editbooking" >
+                                                <c:set var = "status" value = "${j.status}" />
+                                                <c:if test="${status == '0'}">
+                                                    <button type="submit" class="btn btn-success mb-2 btn-sm " name="approve" value="<c:out value="${j.id}"/>">Approve</button>&nbsp;
+                                                    <button type="submit" class="btn btn-danger mb-2 btn-sm" name="reject" value="<c:out value="${j.id}"/>">Reject</button>&nbsp;
+                                                </c:if>
+                                                <c:if test="${status == '1'}">
+                                                    <button type="submit" class="btn btn-info mb-2 btn-sm" name="paid" value="<c:out value="${j.id}"/>">Job Complete</button>&nbsp;
+                                                </c:if>
+                                            </form>
+                                        </td>
                                     </tr>
-
                                 </c:forEach>
-
                                 </tbody>
                             </table>
 
@@ -146,17 +116,10 @@
                             </div>
                         </c:when>
                     </c:choose>
-
                 </div>
             </div>
             <!-- ends here -->
-
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-
-            </div>
-
         </div>
-
     </div>
 
 

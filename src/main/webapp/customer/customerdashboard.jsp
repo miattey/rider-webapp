@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&libraries=places"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         html,
         body {
@@ -427,10 +427,22 @@
 
                     distance_shower.innerHTML = results[j].distance.value/1000;
                     approx_time.innerHTML = results[j].duration.text;
-                    fare_amount.innerHTML = Math.round((results[j].distance.value/1000)*50);
+
+
+
+
+                    $.post("api/hello-world",
+                        {
+                            distance: results[j].distance.value/1000
+                        },
+                        function(data, status){
+                            //alert("Data: " + data + "\nStatus: " + status);
+                            fare_amount.innerHTML = data;
+                            document.getElementById("fare_amounthidden").value = data;
+                        });
 
                     document.getElementById("distanceqw").value = results[j].distance.value/1000;
-                    document.getElementById("fare_amounthidden").value = Math.round((results[j].distance.value/1000)*50);
+
 
 
                     document.getElementById("sub_button").disabled = false;

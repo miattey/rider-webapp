@@ -44,17 +44,17 @@
                             <a class="nav-link " aria-current="page" href="admindashboard">Recent Bookings</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Manage Users</a>
+                            <a class="nav-link dropdown-toggle " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Manage Users</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="managedrivers">Manage Drivers</a></li>
                                 <li><a class="dropdown-item" href="managecustomers?page=1">List All Customers</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Generate Reports</a>
+                            <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Generate Reports</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Recent Bookings</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Daily Report</a></li>
+                                <li><a class="dropdown-item" href="#">Generate Driver's Daily Report</a></li>
                             </ul>
                         </li>
 
@@ -84,61 +84,107 @@
     </div>
 
 
-    <div class="container">
 
-
-        <!-- upcoming jobs -->
+    <div class="container mt-3">
+        <div class="row">
+            <div class="bg-light p-3 border-bottom shadow-sm align-middle">
+                <h1 class="h4 mb-2 fw-normal ">DAILY BOOKINGS OVERVIEW</h1>
+            </div>
+        </div>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6 p-3 bg-body shadow-sm">
+                <!-- Title -->
+                <h6 class="text-uppercase text-muted mb-2">
+                    DATE
+                </h6>
 
-                <a  role="button" class="btn btn-secondary float-end" href="addnewdriver">Add New Driver </a>
+                <!-- Heading -->
+                <span class="h2 mb-0">
+                    <c:out value="${date}" />
+                    </span>
+
+                <!-- Badge -->
+
+            </div>
+            <div class="col-md-6 p-3 bg-body shadow-sm">
+                <!-- Title -->
+                <h6 class="text-uppercase text-muted mb-2">
+                    TOTAL BOOKINGS FOR THE DAY
+                </h6>
+
+                <!-- Heading -->
+                <span class="h2 mb-0">
+                       <c:out value="${totalbookings}" />
+                    </span>
+
+                <!-- Badge -->
+
             </div>
 
         </div>
 
-        <!-- ends here -->
-
-
-
-
     </div>
 
     <div class="container mt-3 p-3 bg-body rounded shadow-sm">
+        <c:choose>
+            <c:when test="${not empty dailybookings}">
+                <table id="" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Driver ID</th>
+                        <th>Customer ID</th>
+                        <th>Start</th>
+                        <th>Destinatiom</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Fee</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-        <table id="" class="table table-striped table-bordered" style="width:100%">
-            <thead>
-            <tr>
-                <th>Driver ID</th>
-                <th>Username</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Vehicle Registration No.</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
+                    <c:forEach items="${dailybookings}" var="j">
+                        <tr>
+                            <td><c:out value="${j.id}"/></td>
+                            <td><c:out value="${j.driver_id}"/></td>
+                            <td><c:out value="${j.customer_id}"/></td>
+                            <td><c:out value="${j.start}"/></td>
+                            <td><c:out value="${j.end}"/></td>
+                            <td><fmt:formatDate type = "time" pattern = "HH:mm" value = "${j.time}" /></td>
+                            <td>
+                                <c:set var = "status" value = "${j.status}" />
+                                <c:if test="${status == '0'}">
+                                    <span class="badge bg-dark">Pending</span>
+                                </c:if>
+                                <c:if test="${status == '1'}">
+                                    <span class="badge bg-success">Approved</span>
+                                </c:if>
+                                <c:if test="${status == '2'}">
+                                    <span class="badge bg-info">Paid</span>
+                                </c:if>
+                                <c:if test="${status == '3'}">
+                                    <span class="badge bg-danger">Rejected</span>
+                                </c:if>
+                            </td>
+                            <td><fmt:formatNumber value = "${j.fee}"  /></td>
+                        </tr>
+                    </c:forEach>
 
-            <c:forEach items="${all_drivers}" var="driver">
-                <tr>
-                    <td><c:out value="${driver.ID}"/></td>
-                    <td><c:out value="${driver.username}"/></td>
-                    <td><c:out value="${driver.firstName}"/></td>
-                    <td><c:out value="${driver.lastName}"/></td>
-                    <td><span class="badge rounded-pill bg-warning text-dark"><c:out value="${driver.reg}"/></span></td>
+                    </tbody>
+                </table>
+            </c:when>
 
-                    <td>
-                        <form class="form-inline" method="POST" action="managedrivers" >
-                            <button type="submit" class="btn-sm btn-danger mb-2" name="delete_id" value="<c:out value="${driver.ID}"/>">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            </c:forEach>
-
-            </tbody>
-        </table>
+            <c:when test="${empty dailybookings}">
+                <div class="alert alert-warning d-flex alight-items-center" role="alert">
+                    <div>No bookings to show!</div>
+                </div>
+            </c:when>
 
 
+
+
+        </c:choose>
 
 
 
