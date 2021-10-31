@@ -120,8 +120,9 @@
 
 
                                             <td>
-                                                <select id="isTitles" name="isTitles" class="form-select form-select-sm" aria-label="Default select example">
-                                                    <option selected>Select a Driver..</option>
+                                                <label for="isTitles">Choose a driver:</label>
+                                                <select id="isTitles" name="isTitles" class="form-select form-select-sm" aria-label="Default select example" required>
+
                                                     <c:choose>
                                                         <c:when test="${not empty alldrivers}" >
                                                             <c:forEach items="${alldrivers}" var="n">
