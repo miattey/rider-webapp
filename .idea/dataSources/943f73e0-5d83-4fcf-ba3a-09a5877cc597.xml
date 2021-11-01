@@ -17,36 +17,233 @@
     <schema id="10" parent="1" name="SYSIBM"/>
     <schema id="11" parent="1" name="SYSPROC"/>
     <schema id="12" parent="1" name="SYSSTAT"/>
-    <table id="13" parent="2" name="USERS"/>
-    <column id="14" parent="13" name="ID">
+    <table id="13" parent="2" name="ADMIN"/>
+    <table id="14" parent="2" name="BOOKING"/>
+    <table id="15" parent="2" name="CUSTOMER"/>
+    <table id="16" parent="2" name="DRIVER"/>
+    <table id="17" parent="2" name="USERS"/>
+    <column id="18" parent="13" name="ID">
       <Position>1</Position>
       <DataType>INTEGER|4s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
       <DefaultExpression>AUTOINCREMENT: start 1 increment 1</DefaultExpression>
     </column>
-    <column id="15" parent="13" name="USERNAME">
+    <column id="19" parent="13" name="USER_ID">
       <Position>2</Position>
-      <DataType>VARCHAR(45)|12s</DataType>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="16" parent="13" name="PASSWORD">
-      <Position>3</Position>
-      <DataType>VARCHAR(45)|12s</DataType>
-    </column>
-    <column id="17" parent="13" name="FULLNAME">
-      <Position>4</Position>
-      <DataType>VARCHAR(45)|12s</DataType>
-    </column>
-    <column id="18" parent="13" name="TYPE">
-      <Position>5</Position>
-      <DataType>VARCHAR(40)|12s</DataType>
-    </column>
-    <index id="19" parent="13" name="SQL210731184315140">
+    <index id="20" parent="13" name="SQL211001220106100">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="20" parent="13" name="USERS_PK">
+    <index id="21" parent="13" name="SQL211001220106110">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>USER_ID</ColNames>
+    </index>
+    <key id="22" parent="13" name="SQL211001220106100">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="23" parent="13" name="SQL211001220106110">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>USER_ID</ColNames>
+      <RefTableName>USERS</RefTableName>
+      <RefKeyName>SQL211001190408280</RefKeyName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <column id="24" parent="14" name="ID">
+      <Position>1</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+      <DefaultExpression>AUTOINCREMENT: start 1 increment 1</DefaultExpression>
+    </column>
+    <column id="25" parent="14" name="CUSTOMER_ID">
+      <Position>2</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="14" name="START">
+      <Position>3</Position>
+      <DataType>VARCHAR(60)|12s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="14" name="DESTINATION">
+      <Position>4</Position>
+      <DataType>VARCHAR(60)|12s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="14" name="DISTANCE">
+      <Position>5</Position>
+      <DataType>DOUBLE|8s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>1</DefaultExpression>
+    </column>
+    <column id="29" parent="14" name="DATE">
+      <Position>6</Position>
+      <DataType>DATE|91s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="14" name="TIME">
+      <Position>7</Position>
+      <DataType>TIME|92s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="31" parent="14" name="FEE">
+      <Position>8</Position>
+      <DataType>DOUBLE|8s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="14" name="DRIVER_ID">
+      <Position>9</Position>
+      <DataType>INTEGER|4s</DataType>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <column id="33" parent="14" name="STATUS">
+      <Position>10</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="34" parent="14" name="SQL211101061627850">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="35" parent="14" name="SQL211101061627851">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CUSTOMER_ID</ColNames>
+    </index>
+    <key id="36" parent="14" name="SQL211101061627850">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="37" parent="14" name="SQL211101061627851">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CUSTOMER_ID</ColNames>
+      <RefTableName>CUSTOMER</RefTableName>
+      <RefKeyName>SQL211001220105920</RefKeyName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <column id="38" parent="15" name="ID">
+      <Position>1</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+      <DefaultExpression>AUTOINCREMENT: start 1 increment 1</DefaultExpression>
+    </column>
+    <column id="39" parent="15" name="ADDRESS">
+      <Position>2</Position>
+      <DataType>VARCHAR(60)|12s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="15" name="USER_ID">
+      <Position>3</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="41" parent="15" name="SQL211001220105920">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="42" parent="15" name="SQL211001220105921">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>USER_ID</ColNames>
+    </index>
+    <key id="43" parent="15" name="SQL211001220105920">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="44" parent="15" name="SQL211001220105921">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>USER_ID</ColNames>
+      <RefTableName>USERS</RefTableName>
+      <RefKeyName>SQL211001190408280</RefKeyName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <column id="45" parent="16" name="ID">
+      <Position>1</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+      <DefaultExpression>AUTOINCREMENT: start 1 increment 1</DefaultExpression>
+    </column>
+    <column id="46" parent="16" name="REGISTRATION">
+      <Position>2</Position>
+      <DataType>VARCHAR(10)|12s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="16" name="USER_ID">
+      <Position>3</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="48" parent="16" name="SQL211001220105960">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="49" parent="16" name="SQL211001220105961">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>USER_ID</ColNames>
+    </index>
+    <key id="50" parent="16" name="SQL211001220105960">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="51" parent="16" name="SQL211001220105961">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>USER_ID</ColNames>
+      <RefTableName>USERS</RefTableName>
+      <RefKeyName>SQL211001190408280</RefKeyName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <column id="52" parent="17" name="ID">
+      <Position>1</Position>
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+      <DefaultExpression>AUTOINCREMENT: start 1 increment 1</DefaultExpression>
+    </column>
+    <column id="53" parent="17" name="USERNAME">
+      <Position>2</Position>
+      <DataType>VARCHAR(255)|12s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="17" name="PASSWORD">
+      <Position>3</Position>
+      <DataType>VARCHAR(255)|12s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="55" parent="17" name="USERTYPE">
+      <Position>4</Position>
+      <DataType>VARCHAR(255)|12s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="17" name="FIRST_NAME">
+      <Position>5</Position>
+      <DataType>VARCHAR(45)|12s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="17" name="LAST_NAME">
+      <Position>6</Position>
+      <DataType>VARCHAR(45)|12s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="58" parent="17" name="SQL211001190408280">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="59" parent="17" name="SQL211001190408280">
+      <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>

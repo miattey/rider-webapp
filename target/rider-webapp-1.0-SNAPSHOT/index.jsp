@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -86,7 +87,11 @@
         <div class="card p-3">
             <h1 class="h4 mb-2 fw-normal">Please sign in</h1>
             <br>
-            ${message}
+            <c:choose>
+                <c:when test="${not empty errMessageLogin}">
+                    <div class='alert alert-danger'><c:out value="${errMessageLogin}"/></div>
+                </c:when>
+            </c:choose>
 
 
             <div class="form-floating">
@@ -99,7 +104,7 @@
             </div>
 
             <button class="w-100 btn btn-lg btn-danger"  type="submit">Login</button>
-            <p class="mt-3 mb-3 text-muted">Sign up for Rider</p>
+            <p class="mt-3 mb-3 text-muted"><a href="register" class="link-dark">Sign up for Rider</a></p>
 
         </div>
     </form>

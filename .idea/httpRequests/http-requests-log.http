@@ -1,0 +1,38 @@
+POST http://localhost:8080/rider-webapp-1.0-SNAPSHOT/api/hello-world
+
+<> 2021-10-31T110913.400.txt
+
+###
+
+POST http://localhost:8080/rider-webapp-1.0-SNAPSHOT/api/hello-world?distance=2
+
+<> 2021-10-31T110903.400.txt
+
+###
+
+POST http://localhost:8080/rider-webapp-1.0-SNAPSHOT/api/hello-world
+
+<> 2021-10-31T110756.400.txt
+
+###
+
+GET http://localhost:8080/rider-webapp-1.0-SNAPSHOT/api/hello-world
+
+<> 2021-10-31T104752.200.txt
+
+###
+
+GET http://localhost:8080/rider-webapp/api/hello-world
+
+<> 2021-10-31T104719.404.html
+
+###
+
+GET http://localhost/api/hello-world
+
+###
+
+GET http://localhost/hello-world
+
+###
+
