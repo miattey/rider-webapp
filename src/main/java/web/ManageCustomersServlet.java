@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
 
-@WebServlet(name = "ManageCustomersServlet", value = "/managecustomers")
+@WebServlet(name = "ManageCustomersServlet", value = "/ManageCustomersServlet")
 public class ManageCustomersServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

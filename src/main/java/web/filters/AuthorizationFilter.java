@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter(filterName = "AuthorizationFilter", urlPatterns = {"/customerdashboard"})
+@WebFilter(filterName = "AuthorizationFilter", urlPatterns = {"/login","/index.jsp"})
 public class AuthorizationFilter implements Filter {
     public void init(FilterConfig config) throws ServletException {
     }
@@ -20,13 +20,26 @@ public class AuthorizationFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
         User user = (User) ((HttpServletRequest)request).getSession().getAttribute("user");
 
-        if (user != null) {
-            chain.doFilter(request, response);
+        if (user != null){
+            if (user.getUsertype().equals("CUSTOMER")) {
+                ((HttpServletResponse) response).sendRedirect(
+                        ((HttpServletRequest)request).getContextPath() + "/customerdashboard"
+                );
+            } else if(user.getUsertype().equals("DRIVER")) {
+                ((HttpServletResponse) response).sendRedirect(
+                        ((HttpServletRequest)request).getContextPath() + "/driverdashboard"
+                );
+            } else if (user.getUsertype().equals("ADMIN")) {
+                ((HttpServletResponse) response).sendRedirect(
+                        ((HttpServletRequest)request).getContextPath() + "/admindashboard"
+                );
+            }
+
         } else {
-            ((HttpServletResponse) response).sendRedirect(
-                    ((HttpServletRequest)request).getContextPath() + "/login"
-            );
+            chain.doFilter(request, response);
         }
+
+
 
     }
 }

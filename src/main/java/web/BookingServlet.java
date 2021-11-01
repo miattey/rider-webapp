@@ -19,7 +19,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.Time;
 
-@WebServlet(name = "BookingServlet", value = "/makebooking")
+@WebServlet(name = "BookingServlet", value = "BookingServlet")
 public class BookingServlet extends HttpServlet {
 
 

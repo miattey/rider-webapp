@@ -16,7 +16,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "CustomerDashboardServlet", value = "/customerdashboard")
+@WebServlet(name = "CustomerDashboardServlet", value = "/CustomerDashboardServlet")
 public class CustomerDashboardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

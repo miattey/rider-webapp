@@ -10,7 +10,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.Connection;
 
-@WebServlet(name = "AddDriverServlet", value = "/addnewdriver")
+@WebServlet(name = "AddDriverServlet", value = "/AddDriverServlet")
 public class AddDriverServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

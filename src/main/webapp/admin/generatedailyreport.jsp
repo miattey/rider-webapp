@@ -51,8 +51,8 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Generate Reports</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Daily Report</a></li>
-                                <li><a class="dropdown-item" href="#">Generate Driver's Daily Report</a></li>
+                                <li><a class="dropdown-item" href="dailyreport">Daily Report</a></li>
+                                <li><a class="dropdown-item" href="generatereport">Generate Driver's Daily Report</a></li>
                             </ul>
                         </li>
 

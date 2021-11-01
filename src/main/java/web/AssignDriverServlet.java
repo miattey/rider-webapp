@@ -8,7 +8,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.Connection;
 
-@WebServlet(name = "AssignDriverServlet", value = "/assigndriver")
+@WebServlet(name = "AssignDriverServlet", value = "/AssignDriverServlet")
 public class AssignDriverServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

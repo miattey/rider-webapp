@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 
-@WebServlet(name = "EditBookingServlet", value = "/editbooking")
+@WebServlet(name = "EditBookingServlet", value = "/EditBookingServlet")
 public class EditBookingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

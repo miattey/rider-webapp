@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@WebServlet(name = "GenerateReportServlet", value = "/generatereport")
+@WebServlet(name = "GenerateReportServlet", value = "/GenerateReportServlet")
 public class GenerateReportServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
