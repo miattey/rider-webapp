@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter(filterName = "AdminDriverAuthorizationFilter", urlPatterns = {"/addnewdriver","/admindashboard","/assigndriver","/makebooking","/dailyreport","/editbooking","/generatereport","/managecustomers","/managedrivers"})
+@WebFilter(filterName = "AdminDriverAuthorizationFilter", urlPatterns = {"/addnewdriver","/admindashboard","/assigndriver","/dailyreport","/generatereport","/managecustomers","/managedrivers"})
 public class AdminAuthorizationFilter implements Filter {
     public void init(FilterConfig config) throws ServletException {
     }

@@ -14,10 +14,10 @@ public class Booking {
         private int status;
         private Time time;
         private Date date;
-         private Driver driver;
-        private int fee;
+        private Driver driver;
+        private double fee;
 
-    public Booking(int id, int customer_id, int driver_id, String start, String end, double distance, int status, Time time, Date date, int fee)
+    public Booking(int id, int customer_id, int driver_id, String start, String end, double distance, int status, Time time, Date date, double fee)
         {
             this.id = id;
             this.customer_id = customer_id;
@@ -32,7 +32,7 @@ public class Booking {
 
         }
 
-    public Booking(String start, String end, double distance, int status, Time time, Date date, int customer_id, int fee)
+    public Booking(String start, String end, double distance, int status, Time time, Date date, int customer_id, double fee)
     {
         this.start = start;
         this.end = end;
@@ -44,7 +44,7 @@ public class Booking {
         this.fee = fee;
     }
 
-    public Booking(String start, String end, double distance, int status, Time time, Date date, Driver driver, int fee)
+    public Booking(String start, String end, double distance, int status, Time time, Date date, Driver driver, double fee)
     {
         this.start = start;
         this.end = end;
@@ -162,12 +162,12 @@ public class Booking {
 
 
 
-        public int getFee()
+        public double getFee()
         {
             return fee;
         }
 
-        public void setFee(int fee)
+        public void setFee(double fee)
         {
             this.fee = fee;
         }
