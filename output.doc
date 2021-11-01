@@ -1,0 +1,78 @@
++---src
+|   \---main
+|       +---java
+|       |   +---model
+|       |   |   +---dao
+|       |   |   |       BookingDAO.java
+|       |   |   |       CustomerDAO.java
+|       |   |   |       DriverDAO.java
+|       |   |   |       UserDAO.java
+|       |   |   |       
+|       |   |   \---pojo
+|       |   |           Booking.java
+|       |   |           Customer.java
+|       |   |           Driver.java
+|       |   |           User.java
+|       |   |           
+|       |   +---web
+|       |   |   |   AddDriverServlet.java
+|       |   |   |   AdminDashboardServlet.java
+|       |   |   |   AssignDriverServlet.java
+|       |   |   |   BookingServlet.java
+|       |   |   |   CustomerDashboardServlet.java
+|       |   |   |   DailyReportServlet.java
+|       |   |   |   DashboardServlet.java
+|       |   |   |   DriverDashboardServlet.java
+|       |   |   |   EditBookingServlet.java
+|       |   |   |   ErrorServlet.java
+|       |   |   |   GenerateReportServlet.java
+|       |   |   |   LoginServlet.java
+|       |   |   |   LogoutServlet.java
+|       |   |   |   ManageCustomersServlet.java
+|       |   |   |   ManageDriversServlet.java
+|       |   |   |   RegisterServlet.java
+|       |   |   |   TestServlet.java
+|       |   |   |   
+|       |   |   +---filters
+|       |   |   |       AdminAuthorizationFilter.java
+|       |   |   |       AuthorizationFilter.java
+|       |   |   |       CustomerAuthorizationFilter.java
+|       |   |   |       DriverAuthorizationFilter.java
+|       |   |   |       
+|       |   |   \---listeners
+|       |   |           DBListener.java
+|       |   |           
+|       |   \---WS
+|       |           HelloApplication.java
+|       |           HelloResource.java
+|       |           
+|       \---webapp
+|           |   error.jsp
+|           |   index.jsp
+|           |   register.jsp
+|           |   
+|           +---admin
+|           |       addnewdriver.jsp
+|           |       admindashboard.jsp
+|           |       assigndriver.jsp
+|           |       generatedailyreport.jsp
+|           |       generatereport.jsp
+|           |       managecustomers.jsp
+|           |       managedrivers.jsp
+|           |       manageusers.jsp
+|           |       viewreport.jsp
+|           |       
+|           +---customer
+|           |       customerdashboard.jsp
+|           |       
+|           +---driver
+|           |       driverdashboard.jsp
+|           |       
+|           +---img
+|           |       LOGO2.png
+|           |       user.png
+|           |       
+|           \---WEB-INF
+|                   sun-jaxws.xml
+|                   web.xml
+ 
