@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter(filterName = "CustomerAuthorizationFilter", urlPatterns = {"/customerdashboard"})
+@WebFilter(filterName = "CustomerAuthorizationFilter", urlPatterns = {"/customerdashboard","/makebooking"})
 public class CustomerAuthorizationFilter implements Filter {
     public void init(FilterConfig config) throws ServletException {
     }

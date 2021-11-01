@@ -34,7 +34,7 @@ public class BookingDAO {
                         rs.getInt("driver_id"), rs.getString("start"),
                         rs.getString("destination"), rs.getDouble("distance"),
                         rs.getInt("status"), rs.getTime("time"),
-                        rs.getDate("date"), rs.getInt("fee"));
+                        rs.getDate("date"), rs.getDouble("fee"));
             }
 
             str.close();
@@ -66,7 +66,7 @@ public class BookingDAO {
                         rs.getInt("driver_id"), rs.getString("start"),
                         rs.getString("destination"), rs.getDouble("distance"),
                         rs.getInt("status"), rs.getTime("time"),
-                        rs.getDate("date"), rs.getInt("fee")));
+                        rs.getDate("date"), rs.getDouble("fee")));
             }
 
             str.close();
@@ -95,7 +95,7 @@ public class BookingDAO {
                         rs.getInt("driver_id"), rs.getString("start"),
                         rs.getString("destination"), rs.getDouble("distance"),
                         rs.getInt("status"), rs.getTime("time"),
-                        rs.getDate("date"), rs.getInt("fee")));
+                        rs.getDate("date"), rs.getDouble("fee")));
             }
 
             str.close();
@@ -127,7 +127,7 @@ public class BookingDAO {
                         rs.getInt("driver_id"), rs.getString("start"),
                         rs.getString("destination"), rs.getDouble("distance"),
                         rs.getInt("status"), rs.getTime("time"),
-                        rs.getDate("date"), rs.getInt("fee")));
+                        rs.getDate("date"), rs.getDouble("fee")));
             }
 
             str.close();
@@ -190,7 +190,7 @@ public class BookingDAO {
                         rs.getInt("driver_id"), rs.getString("start"),
                         rs.getString("destination"), rs.getDouble("distance"),
                         rs.getInt("status"), rs.getTime("time"),
-                        rs.getDate("date"), rs.getInt("fee")));
+                        rs.getDate("date"), rs.getDouble("fee")));
             }
 
             str.close();
@@ -220,7 +220,7 @@ public class BookingDAO {
                         rs.getInt("driver_id"), rs.getString("start"),
                         rs.getString("destination"), rs.getDouble("distance"),
                         rs.getInt("status"), rs.getTime("time"),
-                        rs.getDate("date"), rs.getInt("fee")));
+                        rs.getDate("date"), rs.getDouble("fee")));
             }
 
             str.close();
@@ -252,7 +252,7 @@ public class BookingDAO {
                         rs.getInt("driver_id"), rs.getString("start"),
                         rs.getString("destination"), rs.getDouble("distance"),
                         rs.getInt("status"), rs.getTime("time"),
-                        rs.getDate("date"), rs.getInt("fee")));
+                        rs.getDate("date"), rs.getDouble("fee")));
             }
 
             str.close();
@@ -283,7 +283,7 @@ public class BookingDAO {
             stmt.setDouble(4, j.getDistance());
             stmt.setDate(5, (Date) j.getDate());
             stmt.setTime(6, j.getTime());
-            stmt.setInt(7, j.getFee());
+            stmt.setDouble(7, j.getFee());
             stmt.setInt(8, j.getStatus());
             stmt.executeUpdate();
 

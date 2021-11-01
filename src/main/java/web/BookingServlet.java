@@ -69,7 +69,7 @@ public class BookingServlet extends HttpServlet {
 
         double distance = Double.parseDouble(distancetext);
 
-        int fee = Integer.parseInt(fee_amount);
+        double fee = Double.parseDouble(fee_amount);
 
         //working on
         if (stage.equals("new")) {

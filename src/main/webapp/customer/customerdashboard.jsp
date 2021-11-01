@@ -21,79 +21,62 @@
             margin: 0;
             padding: 0;
         }
-
-
-
-
     </style>
-
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
             <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
         </symbol>
     </svg>
-
 </head>
+
 <body>
 <main class="container">
-    <div class="justify-content-center bg-dark d-flex align-items-center p-4 text-white bg-purple  shadow-sm">
-        <img class="me-3" src="img/LOGO2.png" alt="" width="" height="60">
 
+        <div class="justify-content-center bg-dark d-flex align-items-center p-4 text-white bg-purple  shadow-sm">
+            <img class="me-3" src="img/LOGO2.png" alt="" width="" height="60">
+        </div>
 
-    </div>
-    <div style="background-color:white;" class="px-3 py-2 border-bottom mb-3">
-        <nav class="navbar navbar-light">
-            <div class="container-fluid">
-
-                <div class="text-end justify-content-left">
-                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="pills-mybookings-tab" data-bs-toggle="pill" data-bs-target="#pills-mybookings" type="button" role="tab" aria-controls="pills-mybookings" aria-selected="true">My Bookings</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-makebookings-tab" data-bs-toggle="pill" data-bs-target="#pills-makebookings" type="button" role="tab" aria-controls="pills-makebookings" aria-selected="false">Make Booking</button>
-                        </li>
-
-                    </ul>
-
-
-                </div>
-
-
-
-                <div class="d-flex">
-                    <div class="flex-shrink-0 dropdown">
-                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="img/user.png" alt="mdo"  height="40" class="rounded-circle">
-                        </a>
-                        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2" style="">
-                            <li class="dropdown-item">@${sessionScope.user.username}</li>
-                            <li class="dropdown-item"><hr class="dropdown-divider"></li>
-                            <li class="dropdown-item"><a class="dropdown-item" href="logout">Sign out</a></li>
+        <div style="background-color:white;" class="px-3 py-2 border-bottom mb-3">
+            <nav class="navbar navbar-light">
+                <div class="container-fluid">
+                    <div class="text-end justify-content-left">
+                        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="pills-mybookings-tab" data-bs-toggle="pill" data-bs-target="#pills-mybookings" type="button" role="tab" aria-controls="pills-mybookings" aria-selected="true">My Bookings</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-makebookings-tab" data-bs-toggle="pill" data-bs-target="#pills-makebookings" type="button" role="tab" aria-controls="pills-makebookings" aria-selected="false">Make Booking</button>
+                            </li>
                         </ul>
                     </div>
 
-
+                    <div class="d-flex">
+                        <div class="flex-shrink-0 dropdown">
+                            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="img/user.png" alt="mdo"  height="40" class="rounded-circle">
+                            </a>
+                            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2" style="">
+                                <li class="dropdown-item">@${sessionScope.user.username}</li>
+                                <li class="dropdown-item"><hr class="dropdown-divider"></li>
+                                <li class="dropdown-item"><a class="dropdown-item" href="logout">Sign out</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </div>
+            </nav>
+        </div>
 
     <!-- header ends here -->
 
 
 
 
-    <div class="tab-content" id="pills-tabContent">
-
+ <div class="tab-content" id="pills-tabContent">
         <!-- Customer bookings details tab goes here -->
         <div class="bg-body rounded shadow-sm tab-pane fade show active" id="pills-mybookings" role="tabpanel" aria-labelledby="pills-mybookings-tab">
-
-
-
-
             <div class="d-flex text-muted pt-3" >
                 <div class="container">
+
                     <c:choose>
                         <c:when test="${not empty succCust}">
                             <div class='alert alert-success'><c:out value="${succCust}"/></div>
@@ -103,53 +86,53 @@
                         </c:when>
                     </c:choose>
 
-
-                        <c:choose>
+                    <c:choose>
                             <c:when test="${not empty mybookings}" >
-
-                                <table id="todays_journeys" class="table table-striped table-bordered" style="width:100%">
+                                <table class="table table-striped table-bordered" style="width:100%">
                                     <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Date</th>
-                                        <th>Time</th>
-                                        <th>Start Address</th>
-                                        <th>Destination</th>
-                                        <th>Assigned Driver</th>
-                                        <th>Fee (MVR)</th>
-                                        <th>Status</th>
-                                    </tr>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Start Address</th>
+                                            <th>Destination</th>
+                                            <th>Assigned Driver</th>
+                                            <th>Fee (MVR)</th>
+                                            <th>Status</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${mybookings}" var="j">
-                                        <tr>
-                                            <td><c:out value="${j.id}"/></td>
-                                            <td><fmt:formatDate type = "date" value = "${j.date}" /></td>
-                                            <td><fmt:formatDate type = "time" pattern = "HH:mm" value = "${j.time}" /></td>
-                                            <td><c:out value="${j.start}"/></td>
-                                            <td><c:out value="${j.end}"/></td>
+                                        <c:forEach items="${mybookings}" var="j">
+                                            <tr>
+                                                <td><c:out value="${j.id}"/></td>
+                                                <td><fmt:formatDate type = "date" value = "${j.date}" /></td>
+                                                <td><fmt:formatDate type = "time" pattern = "HH:mm" value = "${j.time}" /></td>
+                                                <td><c:out value="${j.start}"/></td>
+                                                <td><c:out value="${j.end}"/></td>
 
-                                            <c:set var = "name" value = "${j.getDriver().getReg()}" />
-                                            <c:set var = "firstname" value = "${j.getDriver().getFirstName()}" />
-                                            <c:set var = "lastname" value = "${j.getDriver().getLastName()}" />
-                                            <c:set var = "status" value = "${j.status}" />
+                                                <c:set var = "name" value = "${j.getDriver().getReg()}" />
+                                                <c:set var = "firstname" value = "${j.getDriver().getFirstName()}" />
+                                                <c:set var = "lastname" value = "${j.getDriver().getLastName()}" />
+                                                <c:set var = "status" value = "${j.status}" />
 
-                                            <c:if test="${empty name}">
-                                            <td>
-                                                <span class="badge bg-danger">-</span>
-                                            </td>
-                                            </c:if>
-                                            <c:if test="${not empty name}">
-                                            <td>
-                                                <span class="badge rounded-pill bg-warning text-dark"><c:out value="${firstname}"/> <c:out value="${lastname}"/> - <c:out value="${name}"/></span>
-                                            </td>
-                                            </c:if>
-                                            <td><fmt:formatNumber value = "${j.fee}"  /></td>
+                                                <c:if test="${empty name}">
+                                                    <td>
+                                                        <span class="badge bg-danger">-</span>
+                                                    </td>
+                                                </c:if>
+
+                                                <c:if test="${not empty name}">
+                                                    <td>
+                                                        <span class="badge rounded-pill bg-warning text-dark"><c:out value="${firstname}"/> <c:out value="${lastname}"/> - <c:out value="${name}"/></span>
+                                                    </td>
+                                                </c:if>
+
+                                                <td><fmt:formatNumber value = "${j.fee}"  /></td>
 
 
                                                 <td>
                                                     <c:if test="${status == '0'}">
-                                                    <span class="badge bg-dark">Pending</span>
+                                                        <span class="badge bg-dark">Pending</span>
                                                     </c:if>
                                                     <c:if test="${status == '1'}">
                                                         <span class="badge bg-success">Approved</span>
@@ -161,11 +144,8 @@
                                                         <span class="badge bg-danger">Rejected</span>
                                                     </c:if>
                                                 </td>
-
-
-
-                                        </tr>
-                                    </c:forEach>
+                                            </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
 
@@ -179,30 +159,20 @@
                                 </div>
                             </c:when>
                         </c:choose>
-
                 </div>
             </div>
-
-
-
-
-
-
         </div>
         <!-- ends here -->
 
         <!-- Make booking tab goes here -->
         <div class="tab-pane fade" id="pills-makebookings" role="tabpanel" aria-labelledby="pills-makebookings-tab">
-
             <div class="container">
-                <div class="row">
-                    <div class="col-sm-8 bg-body rounded shadow-sm">
+                <form method="POST" action="makebooking">
+                    <div class="row">
+                    <div class="col-md-8 bg-body rounded shadow-sm">
                         <h6 class="bg-light border-bottom p-2 mb-3">Booking details</h6>
 
-                        <form method="POST" action="makebooking">
-                            <div class="row">
-
-                                <div class="col">
+                            <div class="col-12">
                                     <label>Starting address:</label>
                                     <div class="input-group mb-3">
                                         <input type="text" placeholder="Starting address" id="start_address" class="form-control" name="start_address" autofocus="autofocus" required/>
@@ -228,16 +198,13 @@
                                         }
                                         google.maps.event.addDomListener(window, 'load', init);
                                     </script>
-                                </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col">
+                            <div class="col-12">
                                     <label>Destination address:</label>
                                     <div class="input-group mb-3">
                                         <input type="text" placeholder="Destination address" id="destination_address" class="form-control" name="destination_address" required/>
                                     </div>
-                                </div>
                                 <script>
                                     function init2() {
                                         const maldivesBounds = {
@@ -261,52 +228,46 @@
                                 </script>
                             </div>
 
-
-
-                            <div class="row">
-                                <div class="col">
+                            <div class="col-12">
                                     <p><button type="button" onclick="calculateDistances();">Calculate
                                         distances</button></p>
-                                </div>
                             </div>
 
 
 
-                            <div class="row">
-                                <div class="col">
+
+
+                                <div class="col-12">
                                     <label>Date of booking:</label>
                                     <div class="input-group mb-3">
                                         <input type="date" placeholder="Date of booking" class="form-control" name="date" required/>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col">
+
+
+                                <div class="col-12">
                                     <label>Time of booking:</label>
                                     <div class="input-group mb-3">
                                         <input type="time" placeholder="Time of booking" class="form-control" name="time" required/>
                                     </div>
                                 </div>
-                            </div>
 
 
-                            <div class="row">
-                                <div class="col">
+
+                                <div class="col-12">
                                     <div class="input-group mb-3">
                                         <input type="hidden" value="new" name="stage_booking"/>
                                         <input type="submit" id="sub_button" value="Create Booking" class="btn btn-primary" disabled/>
-
                                     </div>
                                 </div>
-                            </div>
+
 
                     </div>
 
 
                     <div class="col-sm-4">
                         <div class="row justify-content-md-center">
-
                             <div class="order-md-last">
                                 <ul class="list-group mb-3">
                                     <li class="list-group-item d-flex justify-content-between lh-sm">
@@ -318,7 +279,7 @@
                                         <div>
                                             <h6 class="my-0">Distance</h6>
                                             <small class="text-muted"><div class="input-group mb-3">
-                                                <label ><label id="distance_shower" ></label> Meters</label>
+                                                <label ><label id="distance_shower" ></label> KM</label>
                                                 <input id="distanceqw" type="hidden" name="distanceqw" value=""/>
                                             </div></small>
                                         </div>
@@ -333,7 +294,8 @@
                                         </div>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between">
-                                        <span>Total (MVR)</span>
+                                        <span>Total (MVR), including GST</span>
+
 
                                         <div id="outputDiv"></div>
 
@@ -346,8 +308,12 @@
 
                             </div>
                         </div>
+
                     </div>
-                    </form>
+                </div>
+
+                </form>
+
                 </div>
 
             </div>
@@ -431,7 +397,7 @@
 
 
 
-                    $.post("api/hello-world",
+                    $.post("api/calculatefare",
                         {
                             distance: results[j].distance.value/1000
                         },
