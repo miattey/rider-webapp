@@ -31,7 +31,7 @@ jdbc:derby://localhost:1527/rider-webapp
 To ensure that the connection to the data source is successful, click the Test Connection link.
 
 
-Now that the database has been created, you can populate the datbles using the database_table.sql file in the repo
+Now that the database has been created, you can populate the database tables using the database_table.sql file in the repo
 
 
 After that Build and run the project
